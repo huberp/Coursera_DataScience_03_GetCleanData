@@ -3,9 +3,9 @@
 # Author: huberp
 ###############################################################################
 
-oldwd <- getwd()
-setwd("./03_GetCleanData/PA/")
-
+#oldwd <- getwd()
+#setwd("./03_GetCleanData/PA/")
+#PLEASE SET YOUR WORKING DIRECTORY FIRST!!!
 
 ###################################################
 # Constant values
