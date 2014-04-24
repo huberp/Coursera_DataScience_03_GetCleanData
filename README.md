@@ -16,8 +16,7 @@ You should create one R script called run_analysis.R that does the following.
 * Appropriately labels the data set with descriptive activity names. 
 * Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 
-Install
-=======
+#Install
 * Please clone this repository to a directory <dir>
 * Please download the data set, find url above, and unpack it in <dir>
 * now you should have a file called "run_analysis.R" and a directory called "UCI HAR Dataset" in the same directory <dir>
@@ -28,16 +27,15 @@ Install
 
 We will call "UCI HAR Dataset" our <basedir>
     
-Use
-===
+#Use
 
 Please source in the file. It will automatically run the code.
 It will produce two files
 * [1] "resultA.txt": File that contains the merged dataset                                                                              
 * [2] "resultB.txt": File that contains the "data set with the average of each variable for each activity and each subject" 
 
-Transformations
-===============
+#Transformations
+## 1st file
 For the first task, "the merged" dataset with only "std or mean" columns and "descriptive" activites we go in function "main"
 Result will be file "resultA.txt"
 * Load the file "features.txt" which contains all possible feature (function "loadFeaturesFile()")
@@ -51,6 +49,7 @@ Result will be file "resultA.txt"
 ** the file <basedir>/<dataset>/subject_<dataset>.txt and add it as column; column name "subject"
 * finally we join both datasets to just one with columns: subject|activities|<all std/mean columns from X_<dataset>.txt
 
+## 2nd file
 For the second task, i.e. doing the data.frame equivalent of SQL "Select avg(*) group by subject and activities" we use the output of the first line and just go:
 DF2<-ddply(r,.(subject, activities), numcolwise(mean))   
 Result will be "resultB.txt"
