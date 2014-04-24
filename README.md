@@ -21,9 +21,9 @@ You should create one R script called run_analysis.R that does the following.
 * Please download the data set, find url above, and unpack it in <dir>
 * now you should have a file called "run_analysis.R" and a directory called "UCI HAR Dataset" in the same directory <dir>
 * please set your working directory to <dir> use setwd(<full_path_to<dir>)
-* if you now type "dir()" into the r console prompt you should see at least
-    [y] "run_analysis.R"                                                                           
-    [x] "UCI HAR Dataset"                                                                          
+* if you now type "dir()" into the R console prompt you should see at least
+** [1] "run_analysis.R"                                                                           
+** [2] "UCI HAR Dataset"                                                                          
 
 We will call "UCI HAR Dataset" our <basedir>
     
