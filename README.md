@@ -25,7 +25,7 @@ You should create one R script called run_analysis.R that does the following.
 ** [1] "run_analysis.R"                                                                           
 ** [2] "UCI HAR Dataset"                                                                          
 
-We will call "UCI HAR Dataset" our <basedir>
+We will call "UCI HAR Dataset" our &lt;basedir&gt;
     
 #Use
 
@@ -43,11 +43,11 @@ Result will be file "resultA.txt"
 ** "NULL" for all features that are not selected to be "std" or "mean"
 ** "numeric" otherwise 
 * The coll class-vector has been named with the feature names
-* with the found col-classes and names we load data for <dataset> in {"train", "test"} (function "loadJoinedDataSet")
-** the file <basedir>/<dataset>/X_<dataset>.txt (appyling the col classes on read.table, we end up with only the necessary columns be loaded)
-** the file <basedir>/<dataset>/y_<dataset>.txt and add is as factor column using <basedir>/activities.txt to create the factor; column name "activities"
-** the file <basedir>/<dataset>/subject_<dataset>.txt and add it as column; column name "subject"
-* finally we join both datasets to just one with columns: subject|activities|<all std/mean columns from X_<dataset>.txt
+* with the found col-classes and names we load data for &lt;dataset&gt; in {"train", "test"} (function "loadJoinedDataSet")
+** the file &lt;basedir&gt;/&lt;dataset&gt;/X_&lt;dataset&gt;.txt (appyling the col classes on read.table, we end up with only the necessary columns be loaded)
+** the file &lt;basedir&gt;/&lt;dataset&gt;/y_&lt;dataset&gt;.txt and add is as factor column using &lt;basedir&gt;/activities.txt to create the factor; column name "activities"
+** the file &lt;basedir&gt;/&lt;dataset&gt;/subject_&lt;dataset&gt;.txt and add it as column; column name "subject"
+* finally we join both datasets to just one with columns: subject|activities|<all std/mean columns from X_&lt;dataset&gt;.txt
 
 ## 2nd file
 For the second task, i.e. doing the data.frame equivalent of SQL "Select avg(*) group by subject and activities" we use the output of the first line and just go:
