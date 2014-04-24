@@ -38,16 +38,16 @@ It will produce two files
 ## 1st file
 For the first task, "the merged" dataset with only "std or mean" columns and "descriptive" activites we go in function "main"
 Result will be file "resultA.txt"
-* Load the file "features.txt" which contains all possible feature (function "loadFeaturesFile()")
-* Build a named col-class vector (function "findColClassVector"), i.e. a vector which contains 
-** "NULL" for all features that are not selected to be "std" or "mean"
-** "numeric" otherwise 
-* The coll class-vector has been named with the feature names
-* with the found col-classes and names we load data for &lt;dataset&gt; in {"train", "test"} (function "loadJoinedDataSet")
-** the file &lt;basedir&gt;/&lt;dataset&gt;/X_&lt;dataset&gt;.txt (appyling the col classes on read.table, we end up with only the necessary columns be loaded)
-** the file &lt;basedir&gt;/&lt;dataset&gt;/y_&lt;dataset&gt;.txt and add is as factor column using &lt;basedir&gt;/activities.txt to create the factor; column name "activities"
-** the file &lt;basedir&gt;/&lt;dataset&gt;/subject_&lt;dataset&gt;.txt and add it as column; column name "subject"
-* finally we join both datasets to just one with columns: subject|activities|<all std/mean columns from X_&lt;dataset&gt;.txt
+1. Load the file "features.txt" which contains all possible feature (function "loadFeaturesFile()")
+2. Build a named col-class vector (function "findColClassVector"), i.e. a vector which contains: 
+* "NULL" for all features that are not selected to be "std" or "mean"
+* "numeric" otherwise 
+3. The coll class-vector has been named with the feature names
+4. with the found col-classes and names we load data for &lt;dataset&gt; in {"train", "test"} (function "loadJoinedDataSet")
+* the file &lt;basedir&gt;/&lt;dataset&gt;/X_&lt;dataset&gt;.txt (appyling the col classes on read.table, we end up with only the necessary columns be loaded)
+* the file &lt;basedir&gt;/&lt;dataset&gt;/y_&lt;dataset&gt;.txt and add is as factor column using &lt;basedir&gt;/activities.txt to create the factor; column name "activities"
+* the file &lt;basedir&gt;/&lt;dataset&gt;/subject_&lt;dataset&gt;.txt and add it as column; column name "subject"
+5. finally we join both datasets to just one with columns: subject|activities|<all std/mean columns from X_&lt;dataset&gt;.txt
 
 ## 2nd file
 For the second task, i.e. doing the data.frame equivalent of SQL "Select avg(*) group by subject and activities" we use the output of the first line and just go:
