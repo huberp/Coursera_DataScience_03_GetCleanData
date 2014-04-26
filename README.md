@@ -37,7 +37,9 @@ It will produce two files
 #Transformations
 ## 1st file
 For the first task, "the merged" dataset with only "std or mean" columns and "descriptive" activites we go in function "main"
+
 Result will be file "resultA.txt"
+
 1. Load the file "features.txt" which contains all possible feature (function "loadFeaturesFile()")
 2. Build a named col-class vector (function "findColClassVector"), i.e. a vector which contains: 
 * "NULL" for all features that are not selected to be "std" or "mean"
@@ -51,5 +53,7 @@ Result will be file "resultA.txt"
 
 ## 2nd file
 For the second task, i.e. doing the data.frame equivalent of SQL "Select avg(*) group by subject and activities" we use the output of the first line and just go:
+
 DF2<-ddply(r,.(subject, activities), numcolwise(mean))   
+
 Result will be "resultB.txt"
