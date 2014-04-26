@@ -25,15 +25,15 @@ You should create one R script called run_analysis.R that does the following.
 	- [1] "run_analysis.R"                                                                           
 	- [2] "UCI HAR Dataset"                                                                          
 
-We will call "UCI HAR Dataset" our <basedir>
+We will call the directory "./UCI HAR Dataset" our `<basedir>`
     
 #Use
 
 Please source in the file `run_analysis.R`. It will automatically run the code.
 It will produce two files
 
-* [1] "<basedir>/resultA.txt": File that contains the merged dataset                                                                              
-* [2] "<basedir>/resultB.txt": File that contains the "data set with the average of each variable for each activity and each subject" 
+* [1] `<basedir>/resultA.txt`: File that contains the merged dataset                                                                              
+* [2] `<basedir>/resultB.txt`: File that contains the "data set with the average of each variable for each activity and each subject" 
 
 #Transformations
 ## 1st file
