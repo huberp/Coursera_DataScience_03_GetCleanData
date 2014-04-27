@@ -23,7 +23,8 @@ You should create one R script called run_analysis.R that does the following.
 * please set your working directory to `<dir>`, in order to do this use `setwd(<full path to dir>)`
 * if you now type `dir()` into the R console prompt you should see at least the following two entries
 	- [1] "run_analysis.R"                                                                           
-	- [2] "UCI HAR Dataset"                                                                          
+	- [2] "UCI HAR Dataset"  
+* Please install library "plyr" from the R command line with: `install.packages("plyr")`
 
 We will call the directory "./UCI HAR Dataset" our `<basedir>`
 
