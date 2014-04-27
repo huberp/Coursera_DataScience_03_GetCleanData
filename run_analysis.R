@@ -5,7 +5,8 @@
 
 #oldwd <- getwd()
 #setwd("./03_GetCleanData/PA/")
-#PLEASE SET YOUR WORKING DIRECTORY FIRST!!!
+
+library(plyr)
 
 ###################################################
 # Constant values
@@ -57,10 +58,9 @@ loadJoinedDataSet <- function(baseDir=const$directory, dir="", colClassSelector=
 	fileNameY <- sprintf(const$frmt.outcomeFile,baseDir,dir,dir)
 	fileNameS <- sprintf(const$frmt.subjectFile,baseDir,dir,dir)
 	
-	selectedFeatures <- read.table(fileNameX,header=FALSE, col.names=names(colClassSelector), colClasses=colClassSelector)
-	#probably read.table has a bug, because the col names are not set correctly with the read.table call, they all contain "...X"
-	#so we just set them correctly
-	names(selectedFeatures) <- names(colClassSelector[colClassSelector!="NULL"]) 
+	#set check.names = FALSE - otherwise character "()-" will be replaced by "..." 
+	#and we get 'tBodyAcc-mean...X' instead of 'tBodyAcc-mean()-X'
+	selectedFeatures <- read.table(fileNameX,header=FALSE, col.names=names(colClassSelector), colClasses=colClassSelector, check.names=FALSE) 
 	#
 	outcomes 		 <- read.table(fileNameY,header=FALSE, colClasses=c("integer"))
 	subjects		 <- read.table(fileNameS,header=FALSE, colClasses=c("integer"))
@@ -165,5 +165,12 @@ write.table(DF1, const$result.file.A)
 ##
 #g<-ddply(r,.(subject, activities),summarize,mean=mean(`tBodyAcc-mean()-X`))
 #http://stackoverflow.com/questions/10787640/ddply-summarize-for-repeating-same-statistical-function-across-large-number-of
-DF2<-ddply(r,.(subject, activities), numcolwise(mean))
+DF2<-ddply(DF1,.(subject, activities), numcolwise(mean))
 write.table(DF2, const$result.file.B)
+
+##
+#read back in bith files - use this to check in my posted assignemnt files, too
+#NOTE: we have to use check.names=FALSE because 'tBodyAcc-mean()-X' is not a valid R variable name. 
+#If we load without check.names=FALSE the name will be replaced to be 'tBodyAcc-mean...X' instead
+A<-read.table(const$result.file.A, header=TRUE,check.names = FALSE)
+B<-read.table(const$result.file.B, header=TRUE,check.names = FALSE)
