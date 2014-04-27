@@ -17,23 +17,27 @@ You should create one R script called run_analysis.R that does the following.
 * Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 
 #Install
-* Please clone this repository to a directory <dir>
-* Please download the data set, find url above, and unpack it in <dir>
-* now you should have a file called "run_analysis.R" and a directory called "UCI HAR Dataset" in the same directory <dir>
-* please set your working directory to <dir> use setwd(<fullpathto<dir>)
-* if you now type "dir()" into the R console prompt you should see at least
+* Please clone this repository to a directory `<dir>`
+* Please download the data set, find url above, and unpack it into `<dir>`
+* now you should have a file called "run_analysis.R" and a directory called "UCI HAR Dataset" in the same directory `<dir>`
+* please set your working directory to `<dir>`, in order to do this use `setwd(<full path to dir>)`
+* if you now type `dir()` into the R console prompt you should see at least the following two entries
 	- [1] "run_analysis.R"                                                                           
 	- [2] "UCI HAR Dataset"                                                                          
 
 We will call the directory "./UCI HAR Dataset" our `<basedir>`
+
+NOTE: 
+* I use the notation `<varname>` to denote a variable with the name "varname". the actual bound value to such a  variable should be clear from the context. 
+* Files with a relative path like `./run_analysis.R` always refer to an appropriately set working directory 
     
 #Use
 
-Please source in the file `run_analysis.R`. It will automatically run the code.
+Please source in the file `./run_analysis.R`. It will automatically run the code.
 It will produce two files
 
-* [1] `<basedir>/resultA.txt`: File that contains the merged dataset                                                                              
-* [2] `<basedir>/resultB.txt`: File that contains the "data set with the average of each variable for each activity and each subject" 
+* [1] `./resultA.txt`: File that contains the merged dataset                                                                              
+* [2] `./resultB.txt`: File that contains the "data set with the average of each variable for each activity and each subject" 
 
 #Transformations
 ## 1st file
@@ -43,13 +47,14 @@ Result will be file "resultA.txt"
 
 ### only "std or mean" 
 1. Load the file "features.txt" which contains all possible feature, see function "loadFeaturesFile()"
-2. Build a col-class vector, see function "findColClassVector", i.e. a vector which contains: 
-    * "NULL" for all features that are not selected to be "std" or "mean"
-	* "numeric" otherwise 
+2. Build a col-class vector, see function "findColClassVector". To find the std and mean features I use two regexps which you can easily find in my `const` constants-list. In the end the vector contains: 
+	* "NULL" for all features that are not selected to be "std" or "mean"
+ 	* "numeric" otherwise 
 3. The coll class-vector has been named with the feature names
+4. It will be used to selectively load columns with read.table
 
 ### add subjects and activities
-with the found "col-classes and names" vector we load data for <dataset> in {"train", "test"}, see function "loadJoinedDataSet"
+with the found "col-classes and names" vector we load data for `<dataset>` in {"train", "test"}, see function "loadJoinedDataSet"
 
 * the file `<basedir>/<dataset>/X_<dataset>.txt` - appyling the col classes on read.table, we end up with only the necessary columns being loaded, leaving everything else away from the begining
 * the file `<basedir>/<dataset>/y_<dataset>.txt` - add it as factor column, using `<basedir>/activities.txt` to create the factor-labels; column name "_activities_"
