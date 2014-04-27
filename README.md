@@ -47,10 +47,11 @@ Result will be file "resultA.txt"
 
 ### only "std or mean" 
 1. Load the file "features.txt" which contains all possible feature, see function "loadFeaturesFile()"
-2. Build a col-class vector, see function "findColClassVector", i.e. a vector which contains: 
-    * "NULL" for all features that are not selected to be "std" or "mean"
-	* "numeric" otherwise 
+2. Build a col-class vector, see function "findColClassVector". To find the std and mean features I use two regexps which you can easily find in my `const` constants-list. In the end the vector contains: 
+	* "NULL" for all features that are not selected to be "std" or "mean"
+ 	* "numeric" otherwise 
 3. The coll class-vector has been named with the feature names
+4. It will be used to selectively load columns with read.table
 
 ### add subjects and activities
 with the found "col-classes and names" vector we load data for `<dataset>` in {"train", "test"}, see function "loadJoinedDataSet"
